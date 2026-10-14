@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edukasi Negara Jerman - Eksplorasi & Pembelajaran Interaktif</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        germany: {
+                            black: '#111111',
+                            red: '#DD0000',
+                            gold: '#FFCC00',
+                            goldDark: '#E6B800',
+                            darkBg: '#0F172A',
+                            cardBg: '#1E293B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .flag-gradient {
+            background: linear-gradient(180deg, #111111 33.33%, #DD0000 33.33%, #DD0000 66.66%, #FFCC00 66.66%);
+        }
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.95));
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col selection:bg-amber-400 selection:text-slate-900">
+
+    <!-- Header Flag Accent Bar -->
+    <div class="h-2 w-full flag-gradient fixed top-0 z-50"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-2 left-0 right-0 z-40 glass-nav border-b border-slate-800/80 shadow-lg px-4 lg:px-8 py-3 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-8 h-8 rounded-full flag-gradient border-2 border-white/20 shadow-md transform group-hover:scale-105 transition"></div>
+                <span class="font-heading font-extrabold text-xl tracking-tight text-white">
+                    Entdecke<span class="text-amber-400">Deutschland</span>
+                </span>
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <div class="hidden lg:flex items-center gap-1 font-medium text-sm">
+                <a href="#profil" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-amber-400 transition">Profil</a>
+                <a href="#budaya" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-amber-400 transition">Budaya</a>
+                <a href="#kuliner" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-amber-400 transition">Kuliner</a>
+                <a href="#sepakbola" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-amber-400 transition">Sepak Bola</a>
+                <a href="#pendidikan" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-amber-400 transition">Universitas</a>
+                <a href="#kuis" class="px-3 py-2 rounded-lg hover:bg-amber-500/10 text-amber-400 border border-amber-500/30 hover:bg-amber-500/20 transition font-semibold">Kuis Interaktif</a>
+                <a href="#tugas" class="px-3 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white font-semibold transition shadow-md hover:shadow-red-900/40">Tugas Classroom</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden mt-3 pt-3 border-t border-slate-800 flex flex-col gap-2 pb-2">
+            <a href="#profil" class="mobile-link px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300">Profil & Ringkasan</a>
+            <a href="#budaya" class="mobile-link px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300">Budaya & Tradisi</a>
+            <a href="#kuliner" class="mobile-link px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300">Makanan Khas</a>
+            <a href="#sepakbola" class="mobile-link px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300">Sepak Bola (Fussball)</a>
+            <a href="#pendidikan" class="mobile-link px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300">Universitas & Pendidikan</a>
+            <a href="#kuis" class="mobile-link px-3 py-2 rounded-md bg-amber-500/10 text-amber-400">Kuis Interaktif</a>
+            <a href="#tugas" class="mobile-link px-3 py-2 rounded-md bg-red-600 text-white font-semibold">Tugas Google Classroom</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <main class="flex-grow pt-16">
+
+        <!-- Hero Banner Section -->
+        <section id="hero" class="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-20 px-4">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=1920" alt="Jerman Brandenburg Gate" class="w-full h-full object-cover">
+                <div class="hero-overlay absolute inset-0"></div>
+            </div>
+
+            <div class="relative z-10 max-w-4xl mx-auto text-center space-y-6">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/80 border border-amber-500/40 text-amber-400 text-sm font-medium tracking-wide">
+                    <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+                    Modul Edukasi Digital Siswa
+                </div>
+                <h1 class="font-heading font-black text-4xl sm:text-6xl md:text-7xl tracking-tight text-white leading-tight">
+                    Jelajahi Kekayaan <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-500 to-amber-300">Negara Jerman</span>
+                </h1>
+                <p class="text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
+                    Website eksplorasi interaktif tentang budaya, sejarah, sains, olahraga, dan pendidikan terbaik di Jerman. Lengkap dengan latihan kuis & refleksi tugas Google Classroom.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 pt-4">
+                    <a href="#profil" class="px-8 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold shadow-lg shadow-amber-500/20 transform hover:-translate-y-0.5 transition flex items-center gap-2">
+                        Mulai Belajar <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                    <a href="#tugas" class="px-8 py-3.5 rounded-xl glass-card hover:bg-slate-800/90 text-white font-semibold border border-slate-700 transition flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-amber-400"></i> Tugas Siswa
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: PROFIL & RINGKASAN -->
+        <section id="profil" class="py-20 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-14 space-y-3">
+                <div class="inline-block text-amber-400 font-bold uppercase tracking-wider text-xs bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
+                    Bab 1: Profil Negara
+                </div>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Ringkasan Fakta Jerman</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Mengenal Republik Federal Jerman (Bundesrepublik Deutschland) dari letak geografis hingga identitas nasionalnya.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                <!-- Card Bendera & Peta Info -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between border-slate-800">
+                    <div>
+                        <div class="relative rounded-xl overflow-hidden shadow-lg mb-6 group border border-slate-700">
+                            <!-- SVG Bendera Jerman -->
+                            <div class="w-full h-48 flex flex-col">
+                                <div class="h-1/3 bg-black"></div>
+                                <div class="h-1/3 bg-red-600"></div>
+                                <div class="h-1/3 bg-amber-400"></div>
+                            </div>
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                                <span class="bg-slate-900/90 text-amber-400 text-xs px-3 py-1.5 rounded-full font-bold">Schwarz-Rot-Gold</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-flag text-amber-400"></i> Bendera & Identitas
+                        </h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Warna Hitam, Merah, dan Emas melambangkan kebebasan dan persatuan bangsa Jerman sejak abad ke-19, mewakili sejarah demokrasi negara ini.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-xs text-slate-400 flex justify-between">
+                        <span>Semboyan:</span>
+                        <span class="text-amber-400 font-semibold italic">Einigkeit und Recht und Freiheit</span>
+                    </div>
+                </div>
+
+                <!-- Fast Facts Grid -->
+                <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Ibu Kota -->
+                    <div class="glass-card p-5 rounded-2xl border-slate-800 hover:border-amber-500/40 transition flex items-start gap-4">
+                        <div class="p-3 rounded-xl bg-red-500/10 text-red-400 text-2xl">
+                            <i class="fa-solid fa-city"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Ibu Kota</span>
+                            <h4 class="text-lg font-bold text-white">Berlin</h4>
+                            <p class="text-slate-400 text-xs mt-1">Pusat pemerintahan, sejarah, seni, dan inovasi teknologi Eropa.</p>
+                        </div>
+                    </div>
+
+                    <!-- Populasi -->
+                    <div class="glass-card p-5 rounded-2xl border-slate-800 hover:border-amber-500/40 transition flex items-start gap-4">
+                        <div class="p-3 rounded-xl bg-amber-500/10 text-amber-400 text-2xl">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Populasi</span>
+                            <h4 class="text-lg font-bold text-white">~84 Juta Jiwa</h4>
+                            <p class="text-slate-400 text-xs mt-1">Negara dengan jumlah penduduk terbesar di Uni Eropa.</p>
+                        </div>
+                    </div>
+
+                    <!-- Mata Uang -->
+                    <div class="glass-card p-5 rounded-2xl border-slate-800 hover:border-amber-500/40 transition flex items-start gap-4">
+                        <div class="p-3 rounded-xl bg-emerald-500/10 text-emerald-400 text-2xl">
+                            <i class="fa-solid fa-euro-sign"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Mata Uang</span>
+                            <h4 class="text-lg font-bold text-white">Euro (€ / EUR)</h4>
+                            <p class="text-slate-400 text-xs mt-1">Menggantikan Deutsche Mark sejak tahun 2002.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bahasa Resmi -->
+                    <div class="glass-card p-5 rounded-2xl border-slate-800 hover:border-amber-500/40 transition flex items-start gap-4">
+                        <div class="p-3 rounded-xl bg-blue-500/10 text-blue-400 text-2xl">
+                            <i class="fa-solid fa-language"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Bahasa Resmi</span>
+                            <h4 class="text-lg font-bold text-white">Bahasa Jerman (Deutsch)</h4>
+                            <p class="text-slate-400 text-xs mt-1">Salah satu bahasa yang paling banyak dituturkan di Eropa.</p>
+                        </div>
+                    </div>
+
+                    <!-- Sistem Pemerintahan -->
+                    <div class="glass-card p-5 rounded-2xl border-slate-800 hover:border-amber-500/40 transition flex items-start gap-4 sm:col-span-2">
+                        <div class="p-3 rounded-xl bg-purple-500/10 text-purple-400 text-2xl">
+                            <i class="fa-solid fa-landmark"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Sistem Pemerintahan</span>
+                            <h4 class="text-lg font-bold text-white">Republik Parlementer Federal</h4>
+                            <p class="text-slate-400 text-xs mt-1">Terdiri dari 16 negara bagian (Bundesländer) dengan otonomi daerah yang kuat. Kepala pemerintahan dipegang oleh Kanselir (Kanzler).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: BUDAYA & TRADISI -->
+        <section id="budaya" class="py-20 px-4 bg-slate-950/60 border-y border-slate-800/80">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14 space-y-3">
+                    <div class="inline-block text-red-400 font-bold uppercase tracking-wider text-xs bg-red-400/10 px-3 py-1 rounded-full border border-red-400/20">
+                        Bab 2: Warisan Budaya
+                    </div>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Budaya, Tradisi & Kebiasaan</h2>
+                    <p class="text-slate-400 max-w-2xl mx-auto">Perpaduan antara tradisi klasik bersejarah, seni kelas dunia, dan budaya hidup yang berdisiplin tinggi.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Oktoberfest -->
+                    <div class="glass-card rounded-2xl overflow-hidden flex flex-col group border-slate-800 hover:border-red-500/50 transition">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?q=80&w=800" alt="Oktoberfest Munich" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-slate-900/80 text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md">Festival</span>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between space-y-3">
+                            <div>
+                                <h3 class="font-bold text-lg text-white mb-2">Festival Oktoberfest</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Festival budaya terbesar di Munich, Bavaria. Berlangsung selama 2 minggu dengan memakai pakaian tradisional *Lederhosen* dan *Dirndl*.
+                                </p>
+                            </div>
+                            <div class="pt-3 border-t border-slate-800/80 text-xs text-amber-400 font-medium">
+                                <i class="fa-solid fa-location-dot"></i> München, Bayern
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Musik Klasik -->
+                    <div class="glass-card rounded-2xl overflow-hidden flex flex-col group border-slate-800 hover:border-red-500/50 transition">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=800" alt="Musik Klasik Beethoven Bach" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-slate-900/80 text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md">Musik & Seni</span>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between space-y-3">
+                            <div>
+                                <h3 class="font-bold text-lg text-white mb-2">Rumah Para Komponis Dunia</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Jerman memelopori era musik klasik. Rumah bagi maestro legendaris seperti Ludwig van Beethoven, Johann Sebastian Bach, dan Johannes Brahms.
+                                </p>
+                            </div>
+                            <div class="pt-3 border-t border-slate-800/80 text-xs text-amber-400 font-medium">
+                                <i class="fa-solid fa-music"></i> Warisan Musik Klasik
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arsitektur & Kastil -->
+                    <div class="glass-card rounded-2xl overflow-hidden flex flex-col group border-slate-800 hover:border-red-500/50 transition">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1528728329032-2972f65dfb3f?q=80&w=800" alt="Neuschwanstein Castle" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-slate-900/80 text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md">Arsitektur</span>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between space-y-3">
+                            <div>
+                                <h3 class="font-bold text-lg text-white mb-2">Kastil & Arsitektur Gothic</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Terkenal dengan kastil dongeng seperti Kastil Neuschwanstein (inspirasi Disney) serta gaya arsitektur Gothic dan Bauhaus modern.
+                                </p>
+                            </div>
+                            <div class="pt-3 border-t border-slate-800/80 text-xs text-amber-400 font-medium">
+                                <i class="fa-solid fa-castle"></i> Kastil Neuschwanstein
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kebiasaan & Etos Kerja -->
+                    <div class="glass-card rounded-2xl overflow-hidden flex flex-col group border-slate-800 hover:border-red-500/50 transition">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800" alt="Kedisiplinan Jerman" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-slate-900/80 text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md">Gaya Hidup</span>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between space-y-3">
+                            <div>
+                                <h3 class="font-bold text-lg text-white mb-2">Pünktlichkeit & Ketertiban</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Masyarakat Jerman sangat menghargai ketepatan waktu (*Pünktlichkeit*), kebersihan lingkungan, pemilahan sampah (*Mülltrennung*), dan kejujuran.
+                                </p>
+                            </div>
+                            <div class="pt-3 border-t border-slate-800/80 text-xs text-amber-400 font-medium">
+                                <i class="fa-solid fa-clock"></i> Nilai Kedisiplinan
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: KULINER KHAS -->
+        <section id="kuliner" class="py-20 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-14 space-y-3">
+                <div class="inline-block text-amber-400 font-bold uppercase tracking-wider text-xs bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
+                    Bab 3: Kekayaan Gastronomi
+                </div>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Makanan & Kuliner Khas</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Sajian lezat berprotein tinggi dan hidangan tradisional bercita rasa khas Jerman.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Bratwurst -->
+                <div class="glass-card rounded-2xl overflow-hidden border-slate-800 hover:border-amber-400/50 transition">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?q=80&w=800" alt="Bratwurst Jerman" class="w-full h-full object-cover">
+                        <span class="absolute bottom-3 left-3 bg-slate-900/90 text-amber-400 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/30">
+                            Sosis Tradisional
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-xl font-bold text-white">Bratwurst / Currywurst</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Sosis panggang khas Jerman dari daging olahan dengan rempah-rempah pilihan. Currywurst di sajikan dengan saus tomat berbumbu kari yang sangat populer di Berlin.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Brezel -->
+                <div class="glass-card rounded-2xl overflow-hidden border-slate-800 hover:border-amber-400/50 transition">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1530610476181-d83430b64dcd?q=80&w=800" alt="Pretzel Brezel" class="w-full h-full object-cover">
+                        <span class="absolute bottom-3 left-3 bg-slate-900/90 text-amber-400 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/30">
+                            Roti Khas
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-xl font-bold text-white">Brezel (Pretzel)</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Roti simpul khas Jerman dengan tekstur renyah di luar dan lembut di dalam, ditaburi garam kasar. Sering dinikmati sebagai cemilan bersama saus keju atau mentega.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Schnitzel -->
+                <div class="glass-card rounded-2xl overflow-hidden border-slate-800 hover:border-amber-400/50 transition">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1599921841143-819065a55cc6?q=80&w=800" alt="Schnitzel" class="w-full h-full object-cover">
+                        <span class="absolute bottom-3 left-3 bg-slate-900/90 text-amber-400 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/30">
+                            Hidangan Utama
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-xl font-bold text-white">Schnitzel</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Daging fillet tanpa tulang yang dipipihkan, dibalur tepung roti, lalu digoreng hingga krispi berwarna keemasan. Biasa disajikan dengan perasan lemon segar.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Sauerkraut -->
+                <div class="glass-card rounded-2xl overflow-hidden border-slate-800 hover:border-amber-400/50 transition">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800" alt="Sauerkraut Fermentasi Kubis" class="w-full h-full object-cover">
+                        <span class="absolute bottom-3 left-3 bg-slate-900/90 text-amber-400 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/30">
+                            Pendamping Sehat
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-xl font-bold text-white">Sauerkraut</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Kubis cincang yang difermentasi dengan rasa asam yang segar. Sauerkraut kaya akan vitamin C dan kaya probiotik baik untuk pencernaan.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Kartoffelsalat -->
+                <div class="glass-card rounded-2xl overflow-hidden border-slate-800 hover:border-amber-400/50 transition md:col-span-2 lg:col-span-2">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=800" alt="Kartoffelsalat Salad Kentang Jerman" class="w-full h-full object-cover">
+                        <span class="absolute bottom-3 left-3 bg-slate-900/90 text-amber-400 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/30">
+                            Salad Kentang
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-xl font-bold text-white">Kartoffelsalat (Salad Kentang)</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Kentang adalah makanan pokok penting di Jerman. Kartoffelsalat diolah dengan potongan kentang rebus, cuka/mayones, daun bawang, dan potongan daging asap yang gurih.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: SEPAK BOLA / FUSSBALL -->
+        <section id="sepakbola" class="py-20 px-4 bg-slate-950/60 border-y border-slate-800/80">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14 space-y-3">
+                    <div class="inline-block text-emerald-400 font-bold uppercase tracking-wider text-xs bg-emerald-400/10 px-3 py-1 rounded-full border border-emerald-400/20">
+                        Bab 4: Olahraga Nasional
+                    </div>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Fussball & Bundesliga</h2>
+                    <p class="text-slate-400 max-w-2xl mx-auto">Sepak bola adalah gairah terbesar rakyat Jerman dengan tradisi kompetisi liga terbaik dunia.</p>
+                </div>
+
+                <!-- National Team Highlight Box -->
+                <div class="glass-card p-6 lg:p-8 rounded-3xl border-slate-800 mb-10 bg-gradient-to-br from-slate-900 via-slate-800 to-red-950/40">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-slate-800 flex-shrink-0 flex items-center justify-center border-4 border-amber-400 text-4xl text-amber-400 shadow-xl">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div class="space-y-3 text-center md:text-left">
+                            <div class="inline-flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-widest">
+                                <span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                                Juara Dunia 4 Kali
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-white">Tim Nasional Jerman (Die Mannschaft)</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed max-w-3xl">
+                                Jerman merupakan salah satu kekuatan sepak bola terhebat dalam sejarah. Mereka berhasil meraih 4 kali Juara Piala Dunia FIFA (1954, 1974, 1990, 2014) serta 3 kali Juara Piala Eropa (Euro).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bundesliga & Clubs -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Bayern München -->
+                    <div class="glass-card rounded-2xl p-6 border-slate-800 relative overflow-hidden flex flex-col justify-between">
+                        <div class="absolute -right-6 -bottom-6 text-red-500/10 text-9xl font-black">
+                            FCB
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center text-white font-black text-xl shadow-md">
+                                    FCB
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white">FC Bayern München</h4>
+                                    <span class="text-xs text-slate-400">Raksasa Bavaria</span>
+                                </div>
+                            </div>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Klub paling tersukses di Jerman dengan raihan puluhan gelar Bundesliga dan gelar UEFA Champions League. Terkenal dengan filosofi permainan disiplin tinggi.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 text-xs text-amber-400 font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved"></i> Stadion: Allianz Arena
+                        </div>
+                    </div>
+
+                    <!-- Borussia Dortmund -->
+                    <div class="glass-card rounded-2xl p-6 border-slate-800 relative overflow-hidden flex flex-col justify-between">
+                        <div class="absolute -right-6 -bottom-6 text-amber-500/10 text-9xl font-black">
+                            BVB
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-black text-xl shadow-md">
+                                    BVB
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white">Borussia Dortmund</h4>
+                                    <span class="text-xs text-slate-400">Die Schwarzgelben</span>
+                                </div>
+                            </div>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Dikenal dengan kelompok suporter luar biasa fanatik "Yellow Wall" (Gelbe Wand). Klub berfokus memunculkan talenta muda terbaik di sepak bola dunia.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 text-xs text-amber-400 font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved"></i> Stadion: Signal Iduna Park
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: UNIVERSITAS & PENDIDIKAN -->
+        <section id="pendidikan" class="py-20 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-14 space-y-3">
+                <div class="inline-block text-blue-400 font-bold uppercase tracking-wider text-xs bg-blue-400/10 px-3 py-1 rounded-full border border-blue-400/20">
+                    Bab 5: Pendidikan Tinggi
+                </div>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Universitas Ternama & Kuliah Gratis</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Jerman adalah destinasi utama bagi pelajar internasional berkat kualitas pendidikan tinggi berkelas dunia.</p>
+            </div>
+
+            <!-- Keuntungan Kuliah Gratis Banner -->
+            <div class="glass-card p-6 rounded-2xl border-amber-500/30 bg-amber-500/5 mb-12 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="p-4 rounded-2xl bg-amber-400 text-slate-950 text-3xl font-black flex-shrink-0">
+                        €0
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Bebas Biaya Kuliah (No Tuition Fees)</h3>
+                        <p class="text-slate-300 text-sm mt-1">
+                            Hampir seluruh universitas negeri di Jerman menggratiskan uang kuliah bagi mahasiswa internasional, hanya dikenakan biaya kontribusi semester yang sangat terjangkau.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex-shrink-0">
+                    <span class="px-4 py-2 rounded-xl bg-slate-800 text-amber-400 font-semibold text-xs border border-amber-500/30">
+                        Inovasi & Riset
+                    </span>
+                </div>
+            </div>
+
+            <!-- List Universitas -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- TUM -->
+                <div class="glass-card p-6 rounded-2xl border-slate-800 hover:border-blue-500/50 transition">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Technical University of Munich (TUM)</h3>
+                            <span class="text-xs text-blue-400 font-semibold">München, Bavaria</span>
+                        </div>
+                        <i class="fa-solid fa-microchip text-2xl text-slate-500"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        Peringkat atas universitas teknik di Eropa. Fokus utama pada rekayasa teknologi, teknik mesin, ilmu komputer, dan sains terapan.
+                    </p>
+                    <div class="text-xs text-slate-400 border-t border-slate-800/80 pt-3">
+                        <i class="fa-solid fa-award text-amber-400 mr-1"></i> Universitas Unggulan Industri & AI
+                    </div>
+                </div>
+
+                <!-- LMU Munich -->
+                <div class="glass-card p-6 rounded-2xl border-slate-800 hover:border-blue-500/50 transition">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">LMU Munich (Ludwig-Maximilians-Universität)</h3>
+                            <span class="text-xs text-blue-400 font-semibold">München, Bavaria</span>
+                        </div>
+                        <i class="fa-solid fa-book-open text-2xl text-slate-500"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        Salah satu universitas tertua dan paling bereputasi tinggi di Eropa, melahirkan puluhan pemenang Peraih Hadiah Nobel dalam sains dan kedokteran.
+                    </p>
+                    <div class="text-xs text-slate-400 border-t border-slate-800/80 pt-3">
+                        <i class="fa-solid fa-award text-amber-400 mr-1"></i> Unggul di bidang Kedokteran & Humaniora
+                    </div>
+                </div>
+
+                <!-- Heidelberg University -->
+                <div class="glass-card p-6 rounded-2xl border-slate-800 hover:border-blue-500/50 transition">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Heidelberg University</h3>
+                            <span class="text-xs text-blue-400 font-semibold">Heidelberg, Baden-Württemberg</span>
+                        </div>
+                        <i class="fa-solid fa-building-columns text-2xl text-slate-500"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        Didirikan pada tahun 1386, merupakan universitas tertua di Jerman. Terkenal dengan riset sains medis, hukum, dan astronomi.
+                    </p>
+                    <div class="text-xs text-slate-400 border-t border-slate-800/80 pt-3">
+                        <i class="fa-solid fa-award text-amber-400 mr-1"></i> Universitas Tertua di Jerman (Est. 1386)
+                    </div>
+                </div>
+
+                <!-- Humboldt University Berlin -->
+                <div class="glass-card p-6 rounded-2xl border-slate-800 hover:border-blue-500/50 transition">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Humboldt University of Berlin</h3>
+                            <span class="text-xs text-blue-400 font-semibold">Berlin</span>
+                        </div>
+                        <i class="fa-solid fa-lightbulb text-2xl text-slate-500"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        Pencetus model pendidikan universitas modern yang menggabungkan riset dan pengajaran. Tempat Albert Einstein pernah mengajar.
+                    </p>
+                    <div class="text-xs text-slate-400 border-t border-slate-800/80 pt-3">
+                        <i class="fa-solid fa-award text-amber-400 mr-1"></i> Kampus Tokoh Dunia (Albert Einstein, Karl Marx)
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: KUIS INTERAKTIF SINGKAT -->
+        <section id="kuis" class="py-20 px-4 bg-slate-950/60 border-y border-slate-800/80">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-10 space-y-3">
+                    <div class="inline-block text-amber-400 font-bold uppercase tracking-wider text-xs bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
+                        Bab 6: Evaluasi Pembelajaran
+                    </div>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Kuis Interaktif Tentang Jerman</h2>
+                    <p class="text-slate-400">Uji pemahaman materi Anda dengan menjawab 5 pertanyaan pilihan ganda di bawah ini!</p>
+                </div>
+
+                <!-- Quiz Card Container -->
+                <div class="glass-card p-6 sm:p-10 rounded-3xl border-slate-800 relative shadow-2xl">
+                    <div id="quiz-box">
+                        <!-- Header Status Progress -->
+                        <div class="flex justify-between items-center mb-6 text-xs text-slate-400 font-semibold border-b border-slate-800 pb-3">
+                            <span id="quiz-progress-text">Pertanyaan 1 dari 5</span>
+                            <span id="quiz-score-badge" class="text-amber-400">Skor Saat Ini: 0</span>
+                        </div>
+
+                        <!-- Question Text -->
+                        <h3 id="quiz-question" class="text-lg sm:text-xl font-bold text-white mb-6">
+                            Loading pertanyaan...
+                        </h3>
+
+                        <!-- Options List -->
+                        <div id="quiz-options" class="space-y-3 mb-8">
+                            <!-- Options dynamically generated -->
+                        </div>
+
+                        <!-- Quiz Action Button -->
+                        <div class="flex justify-end">
+                            <button id="quiz-next-btn" onclick="nextQuestion()" class="hidden px-6 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold transition flex items-center gap-2">
+                                Pertanyaan Berikutnya <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Result Box (Initially Hidden) -->
+                    <div id="quiz-result" class="hidden text-center py-8 space-y-6">
+                        <div class="w-20 h-20 rounded-full bg-amber-500/10 text-amber-400 border-2 border-amber-400 flex items-center justify-center text-4xl mx-auto">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-2xl font-bold text-white">Kuis Selesai!</h3>
+                            <p class="text-slate-300 text-sm">Terima kasih telah menyelesaikan evaluasi pembelajaran materi Jerman.</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 max-w-xs mx-auto">
+                            <span class="text-xs text-slate-400 font-semibold uppercase">Skor Akhir Anda</span>
+                            <div id="final-score" class="text-4xl font-black text-amber-400 mt-1">0 / 100</div>
+                        </div>
+                        <div class="pt-4 flex justify-center gap-4">
+                            <button onclick="restartQuiz()" class="px-6 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold transition text-sm">
+                                <i class="fa-solid fa-rotate-right mr-1"></i> Ulangi Kuis
+                            </button>
+                            <a href="#tugas" class="px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold transition text-sm">
+                                Lanjut ke Tugas Siswa <i class="fa-solid fa-arrow-down ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: TUGAS / REFLEKSI SISWA -->
+        <section id="tugas" class="py-20 px-4 max-w-4xl mx-auto">
+            <div class="text-center mb-10 space-y-3">
+                <div class="inline-block text-red-400 font-bold uppercase tracking-wider text-xs bg-red-400/10 px-3 py-1 rounded-full border border-red-400/20">
+                    Bab 7: Lembar Kerja Siswa
+                </div>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Tugas & Refleksi Kelas</h2>
+                <p class="text-slate-400">Tuliskan identitas dan ringkasan pemahaman Anda tentang Jerman, lalu salin hasilnya untuk diunggah ke Google Classroom.</p>
+            </div>
+
+            <div class="glass-card p-6 sm:p-8 rounded-3xl border-slate-800 space-y-6">
+                <!-- Form Inputs -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Nama Lengkap Siswa</label>
+                        <input type="text" id="student-name" placeholder="Contoh: Budi Santoso" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-amber-400 transition text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Kelas / Nomor Absen</label>
+                        <input type="text" id="student-class" placeholder="Contoh: XI MIPA 2 / 08" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-amber-400 transition text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hal Menarik yang Saya Pelajari Tentang Jerman</label>
+                    <textarea id="reflection-text" rows="4" placeholder="Tuliskan 3 hal menarik (misal: sistem pendidikan gratis, makanan khas Brezel, kebiasaan ketepatan waktu)..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-amber-400 transition text-sm"></textarea>
+                </div>
+
+                <!-- Generate & Action Buttons -->
+                <div class="flex flex-wrap gap-3 pt-2">
+                    <button onclick="generateAssignment()" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold transition flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-gears"></i> Buat Format Laporan
+                    </button>
+                </div>
+
+                <!-- Output Box -->
+                <div id="output-container" class="hidden space-y-3 pt-4 border-t border-slate-800">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Hasil Siap Kirim (Copy Text)</span>
+                        <button onclick="copyAssignmentText()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition flex items-center gap-1.5">
+                            <i class="fa-regular fa-copy"></i> Salin Teks
+                        </button>
+                    </div>
+                    <textarea id="assignment-output" readonly rows="8" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 font-mono text-xs focus:outline-none leading-relaxed"></textarea>
+                    
+                    <!-- Alert Notification Box -->
+                    <div id="copy-alert" class="hidden p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i> Teks berhasil disalin ke clipboard! Silakan paste/tempel di tugas Google Classroom Anda.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-8 px-4 text-center text-slate-500 text-xs space-y-2">
+        <div class="flex justify-center items-center gap-2 text-sm font-bold text-slate-400 mb-2">
+            <span>Entdecke Deutschland</span> &bull; <span>Website Edukasi Interaktif</span>
+        </div>
+        <p>Dirancang untuk pembelajaran interaktif siswa & tugas Google Classroom.</p>
+        <p class="text-slate-600">&copy; Modul Pembelajaran Jerman.</p>
+    </footer>
+
+    <!-- JavaScript Logika Interaktif -->
+    <script>
+        // Toggle Mobile Menu Navigation
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // KUIS INTERAKTIF LOGIC
+        const quizData = [
+            {
+                question: "Apa ibu kota dari Negara Jerman?",
+                options: ["Munich (München)", "Berlin", "Frankfurt", "Hamburg"],
+                answer: 1
+            },
+            {
+                question: "Mana sajakah warna resmi bendera Jerman dari atas ke bawah?",
+                options: ["Merah, Putih, Hitam", "Hitam, Merah, Emas (Schwarz-Rot-Gold)", "Biru, Putih, Merah", "Kuning, Merah, Hitam"],
+                answer: 1
+            },
+            {
+                question: "Makanan khas Jerman berupa roti bertekstur simpul dengan taburan garam kasar disebut...",
+                options: ["Bratwurst", "Sauerkraut", "Brezel (Pretzel)", "Schnitzel"],
+                answer: 2
+            },
+            {
+                question: "Berapa kali Tim Nasional Sepak Bola Jerman (Die Mannschaft) berhasil menjuarai Piala Dunia FIFA?",
+                options: ["2 Kali", "3 Kali", "4 Kali", "5 Kali"],
+                answer: 2
+            },
+            {
+                question: "Universitas tertua di Jerman yang didirikan pada tahun 1386 adalah...",
+                options: ["Technical University of Munich", "Heidelberg University", "Humboldt University Berlin", "LMU Munich"],
+                answer: 1
+            }
+        ];
+
+        let currentQuizIndex = 0;
+        let score = 0;
+        let selectedOption = null;
+
+        function loadQuestion() {
+            selectedOption = null;
+            const currentData = quizData[currentQuizIndex];
+            
+            document.getElementById('quiz-progress-text').innerText = `Pertanyaan ${currentQuizIndex + 1} dari ${quizData.length}`;
+            document.getElementById('quiz-score-badge').innerText = `Skor Saat Ini: ${score}`;
+            document.getElementById('quiz-question').innerText = `${currentQuizIndex + 1}. ${currentData.question}`;
+            
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+
+            currentData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'w-full text-left p-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 text-sm font-medium transition flex items-center justify-between group';
+                btn.onclick = () => selectOption(idx, btn);
+                btn.innerHTML = `
+                    <span>${opt}</span>
+                    <i class="fa-regular fa-circle text-slate-600 group-hover:text-amber-400"></i>
+                `;
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('quiz-next-btn').classList.add('hidden');
+        }
+
+        function selectOption(index, buttonEl) {
+            const currentData = quizData[currentQuizIndex];
+            const allButtons = document.getElementById('quiz-options').children;
+
+            // Disable all buttons after choice
+            for (let btn of allButtons) {
+                btn.disabled = true;
+                btn.classList.add('cursor-not-allowed');
+            }
+
+            if (index === currentData.answer) {
+                buttonEl.classList.remove('bg-slate-900', 'border-slate-700');
+                buttonEl.classList.add('bg-emerald-500/20', 'border-emerald-500', 'text-emerald-300');
+                buttonEl.querySelector('i').className = 'fa-solid fa-circle-check text-emerald-400';
+                score += 20; // 5 questions * 20 = 100 max score
+            } else {
+                buttonEl.classList.remove('bg-slate-900', 'border-slate-700');
+                buttonEl.classList.add('bg-red-500/20', 'border-red-500', 'text-red-300');
+                buttonEl.querySelector('i').className = 'fa-solid fa-circle-xmark text-red-400';
+
+                // Highlight correct answer
+                const correctBtn = allButtons[currentData.answer];
+                correctBtn.classList.remove('bg-slate-900', 'border-slate-700');
+                correctBtn.classList.add('bg-emerald-500/20', 'border-emerald-500', 'text-emerald-300');
+                correctBtn.querySelector('i').className = 'fa-solid fa-circle-check text-emerald-400';
+            }
+
+            document.getElementById('quiz-score-badge').innerText = `Skor Saat Ini: ${score}`;
+            document.getElementById('quiz-next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuizIndex++;
+            if (currentQuizIndex < quizData.length) {
+                loadQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-box').classList.add('hidden');
+            const resultBox = document.getElementById('quiz-result');
+            resultBox.classList.remove('hidden');
+            document.getElementById('final-score').innerText = `${score} / 100`;
+        }
+
+        function restartQuiz() {
+            currentQuizIndex = 0;
+            score = 0;
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-box').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        // Initialize quiz on load
+        window.onload = function() {
+            loadQuestion();
+        };
+
+        // GENERATE & COPY REFLEKSI TUGAS SISWA
+        function generateAssignment() {
+            const name = document.getElementById('student-name').value.trim();
+            const studentClass = document.getElementById('student-class').value.trim();
+            const reflection = document.getElementById('reflection-text').value.trim();
+
+            if (!name || !studentClass || !reflection) {
+                alert('Mohon isi semua data (Nama, Kelas, dan Refleksi) sebelum membuat laporan!');
+                return;
+            }
+
+            const formattedText = `=========================================
+LAPORAN TUGAS EDUKASI NEGARA JERMAN
+Google Classroom Submission
+=========================================
+Nama Siswa    : ${name}
+Kelas / Absen : ${studentClass}
+Skor Kuis     : ${score} / 100
+
+-----------------------------------------
+REFLEKSI PEMBELAJARAN:
+-----------------------------------------
+${reflection}
+
+-----------------------------------------
+Dikirim melalui Modul Web "Entdecke Deutschland"
+=========================================`;
+
+            document.getElementById('assignment-output').value = formattedText;
+            document.getElementById('output-container').classList.remove('hidden');
+        }
+
+        function copyAssignmentText() {
+            const outputTextarea = document.getElementById('assignment-output');
+            outputTextarea.select();
+            outputTextarea.setSelectionRange(0, 99999); // Mobile compatibility
+
+            try {
+                document.execCommand('copy');
+                const alertBox = document.getElementById('copy-alert');
+                alertBox.classList.remove('hidden');
+                setTimeout(() => {
+                    alertBox.classList.add('hidden');
+                }, 4000);
+            } catch (err) {
+                alert('Gagal menyalin teks secara otomatis. Silakan salin secara manual.');
+            }
+        }
+    </script>
+</body>
+</html>
